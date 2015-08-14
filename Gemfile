@@ -5,7 +5,7 @@ ruby '2.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Jsパッケージの管理
-gem 'bower-rails'
+gem 'bower-rails', '~> 0.10.0'
 # Sassを使えるようにする
 gem 'sass-rails', '~> 5.0'
 # Sassの拡張

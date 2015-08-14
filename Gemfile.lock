@@ -232,7 +232,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bower-rails
+  bower-rails (~> 0.10.0)
   bullet
   byebug
   capybara
