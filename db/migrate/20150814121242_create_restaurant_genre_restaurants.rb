@@ -6,5 +6,8 @@ class CreateRestaurantGenreRestaurants < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :restaurant_genre_restaurants, :restaurant_id 
+    add_index :restaurant_genre_restaurants, :genre_id
   end
 end

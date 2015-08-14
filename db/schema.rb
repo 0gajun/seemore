@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20150814123632) do
     t.datetime "updated_at",    null: false
   end
 
+  add_index "restaurant_genre_restaurants", ["genre_id"], name: "index_restaurant_genre_restaurants_on_genre_id", using: :btree
+  add_index "restaurant_genre_restaurants", ["restaurant_id"], name: "index_restaurant_genre_restaurants_on_restaurant_id", using: :btree
+
   create_table "restaurant_genres", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
