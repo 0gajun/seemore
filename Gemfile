@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 # テンプレートエンジン
 gem 'slim-rails'
+# 認証処理周りを担ってくれる(deviseより単純)
+gem 'sorcery', '~>0.9.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
