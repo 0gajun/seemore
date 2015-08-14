@@ -8,5 +8,11 @@ FactoryGirl.define do
     address   "神奈川県横浜市港北区日吉本町1-21-5 西之蔵ビル　３Ｆ"
     longitude 139.6460374
     latitude  35.5532167
+
+    factory :restaurant2 do
+      name      "大戸屋"
+      tel       "000-000-0000"
+      intro     "和食だよ"
+    end
   end
 end
