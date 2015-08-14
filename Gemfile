@@ -38,6 +38,8 @@ group :development do
   gem 'rails_best_practices'
   # 余分なSQL(N+1問題等)を検出してくれる
   gem 'bullet'
+  # ER図を吐き出してくれる
+  gem 'rails-erd'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
