@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814123632) do
+ActiveRecord::Schema.define(version: 20150815084934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "check_ins", force: :cascade do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "restaurant_id", null: false
+    t.integer  "menu_id"
+    t.text     "comment"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "check_ins", ["restaurant_id"], name: "index_check_ins_on_restaurant_id", using: :btree
+  add_index "check_ins", ["user_id"], name: "index_check_ins_on_user_id", using: :btree
 
   create_table "restaurant_genre_restaurants", force: :cascade do |t|
     t.integer  "restaurant_id", null: false
