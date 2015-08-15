@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   # チェックイン情報
-  has_many :check_ins
+  has_many :check_in
+  # 混雑レポート
+  has_many :congestion_report
 
   # 存在性チェック
   validates :username,  presence: true
