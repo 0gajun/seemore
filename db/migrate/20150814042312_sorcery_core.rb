@@ -6,6 +6,7 @@ class SorceryCore < ActiveRecord::Migration
       t.string  :crypted_password
       t.string  :salt
       t.string  :nickname
+      t.string  :image_url
       t.date    :birth_date
       # 性別
       t.integer :sex,              :null => false
