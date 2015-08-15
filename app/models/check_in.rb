@@ -1,5 +1,5 @@
 class CheckIn < ActiveRecord::Base
-  belongs_to :users
+  belongs_to :user
   belongs_to :restaurant
 
   validates :user_id, presence: true
