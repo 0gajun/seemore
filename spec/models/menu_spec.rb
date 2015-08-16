@@ -6,33 +6,34 @@ RSpec.describe Menu, type: :model do
   before { menu.restaurant_id = restaurant.id }
 
   describe "メニュー作成は" do
+    subject { menu.save }
     context "正常値の場合" do
       it "成功すること" do
-        expect(menu.save).to eq(true)
+        expect(subject).to eq(true)
       end
     end
     context "restaurant_idがnilの場合は" do
       before { menu.restaurant_id = nil }
       it "失敗すること" do
-        expect(menu.save).to eq(false)
+        expect(subject).to eq(false)
       end
     end
     context "nameが空の場合は" do
       before { menu.name = "" }
       it "失敗すること" do
-        expect(menu.save).to eq(false)
+        expect(subject).to eq(false)
       end
     end
     context "priceがnilでも" do
       before { menu.price = nil }
       it "成功すること" do
-        expect(menu.save).to eq(true)
+        expect(subject).to eq(true)
       end
     end
     context "priceが負の数の場合" do
       before { menu.price = -100 }
       it "失敗すること" do
-        expect(menu.save).to eq(false)
+        expect(subject).to eq(false)
       end
     end
   end
