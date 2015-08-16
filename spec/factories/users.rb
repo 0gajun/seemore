@@ -18,5 +18,25 @@ FactoryGirl.define do
       grade       "学部4年"
       comment     "John!"
     end
+    factory :user3 do
+      username    "shishamo"
+      email       "shishamo@seemore.inc"
+      nickname    "shishamo"
+      birth_date  Date.new(1990, 8, 5)
+      sex         0
+      grade       "学部4年"
+      comment     "量産型彼氏"
+
+    end
+    factory :user4 do
+      username    "androp"
+      email       "androp@seemore.inc"
+      nickname    "androp"
+      birth_date  Date.new(1990, 8, 5)
+      sex         1
+      grade       "学部4年"
+      comment     "Voice!"
+
+    end
   end
 end
