@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) { build(:user) }
+
   describe "ユーザ作成は" do
-    let(:user) { build(:user) }
     let(:user2) { build(:user2) }
     subject { user.save }
     context "正しいパラメータの際" do
@@ -72,10 +73,9 @@ RSpec.describe User, type: :model do
   end
 
   describe ".follow!" do
-    let(:user) { create(:user) }
     let(:user2) { create(:user2) }
     subject { user }
-    before { user.follow!(user2) }
+    before { user.save; user.follow!(user2) }
     it { is_expected.to be_following(user2) }
     it { expect(subject.followed_users).to include(user2) }
 
@@ -92,10 +92,30 @@ RSpec.describe User, type: :model do
   end
 
   describe ".check_in" do
-    let(:user) { create(:user) }
     let(:restaurant) { create(:restaurant) }
     let(:check_in) { build(:check_in) }
+    before { user.save }
     subject { user.check_in!(restaurant, check_in.menu_id, check_in.comment) }
     it { expect{ subject }.to change{ user.check_ins.count }.by(1) }
+  end
+
+  describe ".timeline" do
+    before { user.save }
+    let(:unfollowed_check_in) { create(:check_in, user: create(:user2)) }
+    let(:followed_user) { create(:user3) }
+    let(:followd_check_in) { create(:check_in, user: followed_user) }
+    let(:restaurant) { create(:restaurant) }
+    before do
+      user.follow!(followed_user)
+      3.times { followed_user.check_ins.create!(restaurant: restaurant) }
+    end
+    subject { user.timeline }
+    it { is_expected.to include(followd_check_in) }
+    it { is_expected.not_to include(unfollowed_check_in) }
+    it "contains all followed user check_ins" do
+      followed_user.check_ins.each do |check_in|
+        is_expected.to include(check_in)
+      end
+    end
   end
 end

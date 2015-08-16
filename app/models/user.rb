@@ -36,4 +36,8 @@ class User < ActiveRecord::Base
   def check_in!(restaurant, menu_id, comment)
     check_ins.create!(restaurant_id: restaurant.id, menu_id: menu_id, comment: comment)
   end
+
+  def timeline
+    CheckIn.from_followed_users_by(self)
+  end
 end
