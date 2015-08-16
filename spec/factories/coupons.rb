@@ -7,5 +7,4 @@ FactoryGirl.define do
     expiration_date Date.new(2015, 12, 12)
     remain          100
   end
-
 end

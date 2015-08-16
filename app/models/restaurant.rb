@@ -8,6 +8,8 @@ class Restaurant < ActiveRecord::Base
   has_many :check_in
   # 混雑レポート
   has_many :congestion_report
+  # クーポン情報
+  has_many :coupon
 
   # 存在性チェック
   validates :name, presence: true

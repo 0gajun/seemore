@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816053008) do
+ActiveRecord::Schema.define(version: 20150816055347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150816053008) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "coupons", "restaurants", on_update: :cascade, on_delete: :cascade
   add_foreign_key "menus", "restaurants", on_update: :cascade, on_delete: :cascade
   add_foreign_key "restaurant_genre_restaurants", "restaurant_genres", column: "genre_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "restaurant_genre_restaurants", "restaurants", on_update: :cascade, on_delete: :cascade
