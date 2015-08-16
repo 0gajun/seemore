@@ -90,4 +90,12 @@ RSpec.describe User, type: :model do
       it { expect(subject.followers).to include(user) }
     end
   end
+
+  describe ".check_in" do
+    let(:user) { create(:user) }
+    let(:restaurant) { create(:restaurant) }
+    let(:check_in) { build(:check_in) }
+    subject { user.check_in!(restaurant, check_in.menu_id, check_in.comment) }
+    it { expect{ subject }.to change{ user.check_ins.count }.by(1) }
+  end
 end

@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     follows.find_by(followee_id: other_user.id).destroy!
   end
+
+  def check_in!(restaurant, menu_id, comment)
+    check_ins.create!(restaurant_id: restaurant.id, menu_id: menu_id, comment: comment)
+  end
 end
