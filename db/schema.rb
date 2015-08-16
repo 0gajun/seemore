@@ -51,11 +51,15 @@ ActiveRecord::Schema.define(version: 20150816062032) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer  "followee",   null: false
-    t.integer  "follower",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "followee_id", null: false
+    t.integer  "follower_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "follows", ["followee_id"], name: "index_follows_on_followee_id", using: :btree
+  add_index "follows", ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true, using: :btree
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.integer  "restaurant_id", null: false
@@ -116,8 +120,8 @@ ActiveRecord::Schema.define(version: 20150816062032) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "coupons", "restaurants", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "follows", "users", column: "followee", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "follows", "users", column: "follower", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "follows", "users", column: "followee_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "follows", "users", column: "follower_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "menus", "restaurants", on_update: :cascade, on_delete: :cascade
   add_foreign_key "restaurant_genre_restaurants", "restaurant_genres", column: "genre_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "restaurant_genre_restaurants", "restaurants", on_update: :cascade, on_delete: :cascade
