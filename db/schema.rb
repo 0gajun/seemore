@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816043729) do
+ActiveRecord::Schema.define(version: 20150816053008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20150816043729) do
 
   add_index "congestion_reports", ["restaurant_id"], name: "index_congestion_reports_on_restaurant_id", using: :btree
   add_index "congestion_reports", ["user_id"], name: "index_congestion_reports_on_user_id", using: :btree
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "title",           null: false
+    t.integer  "restaurant_id",   null: false
+    t.text     "content",         null: false
+    t.text     "condition"
+    t.date     "expiration_date", null: false
+    t.integer  "remain"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "menus", force: :cascade do |t|
     t.integer  "restaurant_id", null: false
