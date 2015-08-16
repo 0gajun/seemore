@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   # チェックイン情報
-  has_many :check_in
+  has_many :check_ins
   # 混雑レポート
-  has_many :congestion_report
+  has_many :congestion_reports
   # フォロー関係
   has_many :follows, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :follows, source: :followee

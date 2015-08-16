@@ -17,4 +17,12 @@ RSpec.describe Restaurant, type: :model do
       end
     end
   end
+
+  describe "関連メソッド" do
+    it { is_expected.to respond_to(:restaurant_genre) }
+    it { is_expected.to respond_to(:menus) }
+    it { is_expected.to respond_to(:check_ins) }
+    it { is_expected.to respond_to(:congestion_reporas) }
+    it { is_expected.to respond_to(:coupons) }
+  end
 end

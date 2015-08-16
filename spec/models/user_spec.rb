@@ -64,8 +64,10 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "関連付けにおいて" do
+  describe "関連メソッド" do
     it { is_expected.to respond_to(:followers) }
     it { is_expected.to respond_to(:followed_users) }
+    it { is_expected.to respond_to(:check_ins) }
+    it { is_expected.to respond_to(:congestion_reports) }
   end
 end

@@ -41,4 +41,9 @@ RSpec.describe RestaurantGenreRestaurant, type: :model do
       end
     end
   end
+
+  describe "関連メソッド" do
+    it { is_expected.to respond_to(:restaurant) }
+    it { is_expected.to respond_to(:restaurant_genre) }
+  end
 end
