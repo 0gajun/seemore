@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
   # チェックイン情報
   has_many :check_ins
   # 混雑レポート
-  has_many :congestion_reporas
+  has_many :congestion_reports
   # クーポン情報
   has_many :coupons
 
