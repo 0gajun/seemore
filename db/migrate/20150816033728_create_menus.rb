@@ -8,5 +8,6 @@ class CreateMenus < ActiveRecord::Migration
       
       t.timestamps null: false
     end
+    add_index :manus, :restaurant_id
   end
 end
