@@ -1,5 +1,5 @@
 class Menu < ActiveRecord::Base
-  belongs_to  :restaurant
+  belongs_to  :restaurant,  dependent: :destroy
 
   validates :restaurant_id,   presence: true
   validates :name,            presence: true
