@@ -70,4 +70,24 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to(:check_ins) }
     it { is_expected.to respond_to(:congestion_reports) }
   end
+
+  describe ".follow!" do
+    let(:user) { create(:user) }
+    let(:user2) { create(:user2) }
+    subject { user }
+    before { user.follow!(user2) }
+    it { is_expected.to be_following(user2) }
+    it { expect(subject.followed_users).to include(user2) }
+
+    describe "and .unfollow!" do
+      before { user.unfollow!(user2) }
+      it { is_expected.not_to be_following(user2) }
+      it { expect(subject.followed_users).not_to include(user2) }
+    end
+
+    describe "followed user" do
+      subject { user2 }
+      it { expect(subject.followers).to include(user) }
+    end
+  end
 end

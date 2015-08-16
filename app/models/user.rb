@@ -19,4 +19,17 @@ class User < ActiveRecord::Base
   validates :email,     uniqueness: true
   # 性別の値範囲チェック
   validates :sex,       inclusion: { in: 0..2 }
+
+
+  def following?(other_user)
+    follows.find_by(followee_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    follows.create!(followee_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    follows.find_by(followee_id: other_user.id).destroy!
+  end
 end
