@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20150816043729) do
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "nickname"
+    t.string   "image_url"
     t.date     "birth_date"
     t.integer  "sex",              null: false
     t.string   "grade"
