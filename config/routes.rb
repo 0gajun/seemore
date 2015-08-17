@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope :v1 do
     post 'login' => 'sessions#create'
     post 'logout' => 'sessions#destroy'
+    resources :users
     resources :sessions
   end
 
