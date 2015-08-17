@@ -1,3 +1,4 @@
+require 'bcrypt'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -39,4 +40,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+end
+
+Rails.application.config.sorcery.configure do |config|
+  config.user_config do |user|
+    user.stretches = 1
+  end
 end

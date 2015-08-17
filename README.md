@@ -3,3 +3,9 @@
 
 # Seemore Platform
 Work in progress...
+
+
+# Note
+## SessionController
++ CSRF対策を無効にしている
+  - APIだけじゃなく，Webでも使うようになったら注意

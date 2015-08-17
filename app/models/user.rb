@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
   # 性別の値範囲チェック
   validates :sex,       inclusion: { in: 0..2 }
 
+  def profile
+    attrs = {}
+    attribute_names.each do |name|
+      next if name == 'crypted_password' || name == 'salt'
+      attrs[name] = read_attribute(name)
+    end
+    attrs
+  end
 
   def following?(other_user)
     follows.find_by(followee_id: other_user.id)

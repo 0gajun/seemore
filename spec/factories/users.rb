@@ -1,8 +1,11 @@
 FactoryGirl.define do
+  salt = "asdasdastr4325234324sdfds"
   factory :user do
     # デフォルトテストユーザ
     username    "seemore"
     email       "seemore@seemore.inc"
+    salt        salt 
+    password    Sorcery::CryptoProviders::BCrypt.encrypt("hogehoge", salt)
     nickname    "seemore"
     birth_date  Date.new(2015, 8, 5)
     sex         1
